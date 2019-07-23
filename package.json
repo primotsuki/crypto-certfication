@@ -1,0 +1,22 @@
+{
+  "name": "crypto-certfication",
+  "version": "1.0.0",
+  "description": "it´s a project to save certificates using the ethereum blockchain and IPFS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/primotsuki/crypto-certfication.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/primotsuki/crypto-certfication/issues"
+  },
+  "homepage": "https://github.com/primotsuki/crypto-certfication#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
