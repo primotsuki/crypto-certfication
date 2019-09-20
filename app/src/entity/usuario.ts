@@ -24,7 +24,7 @@ export class Usuario {
     @Column()
     password: string;
 
-    @Column({type:"datetime"})
+    @Column({type:"datetime",default: () => "CURRENT_TIMESTAMP"})
     createdAt: Date;
 
     @OneToMany(type=> Certificado, certificado => certificado.usuarios)
