@@ -3,6 +3,9 @@ import * as jwt from "jsonwebtoken";
 import {getConnection} from "typeorm";
 import {Usuario} from '../../entity/usuario';
 import * as bcrypt from "bcrypt";
+import * as dotenv from 'dotenv';
+
+const env = dotenv.config();
 
 export async function loginUser(req: Request, response: Response){
     var username = req.body.username;
@@ -23,7 +26,7 @@ export async function loginUser(req: Request, response: Response){
                 id: user.id
               }
             
-              var token = jwt.sign(tokenData, 'Secret Password', {
+              var token = jwt.sign(tokenData, process.env.JWT_SECRET_KEY, {
                  expiresIn: 60 * 60 * 24 // expires in 24 hours
               })
             

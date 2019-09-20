@@ -4,6 +4,7 @@ import {Request, Response} from 'express';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import {AppRoutes} from './routes';
+import {isAutenticated} from './middlewares/autenticated';
 
 createConnection().then(async connection => {
 
@@ -14,6 +15,7 @@ createConnection().then(async connection => {
 
     app.listen(3000);
     console.log("Express Aplication is up and running on port 3000");
+    app.use(isAutenticated);
     AppRoutes.forEach(route => {
         app[route.method](route.path, (request: Request, response: Response, next: Function) => {
             route.action(request, response)
