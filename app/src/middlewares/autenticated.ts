@@ -6,7 +6,9 @@ const env = dotenv.config()
 
 export async function isAutenticated( req: Request, res: Response, next) {
     if(req.path!='/login' || req.path!='/register') {
-        var token = req.headers['authorization'];
+      next();
+    } else {
+      var token = req.headers['authorization'];
     if(!token) {
         res.status(401).send({
             error: "not authorized"

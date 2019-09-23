@@ -9,13 +9,14 @@ export async function RegisterUser(req: Request, res: Response) {
     let user = req.body;
     bcrypt.hash(user.password, BCRYPT_SALT_ROUNDS)
     .then(async hashedPassword=>{
-        await getConnection()
+        const new_user = await getConnection()
         .createQueryBuilder()
         .insert()
         .into(Usuario)
         .values({ 
         nombre: user.nombre,
         username: user.username,
+        email: user.email,
         apellido_paterno: user.apellido_paterno,
         apellido_materno: user.apellido_materno,
         password: hashedPassword
