@@ -19,7 +19,6 @@ export class AppComponent {
   ) {
     this.authenticacionService.currentUser.subscribe(x => this.currentUser = x);
   }
-  title = 'webapp';
 
   logout() {
     this.authenticacionService.logout();
