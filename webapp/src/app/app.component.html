@@ -1,46 +1,95 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
-<mat-toolbar color="primary" *ngIf="currentUser">
-    <mat-toolbar-row>
-      <button mat-icon-button>
-        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-      </button>
-      <h1>CERTIFICATION APP</h1>
-      <span class="menu-spacer"></span>
-      <div>
-        <a mat-button [routerLink]="'/accounts'"> Accounts </a>
-        <a mat-button [routerLink]="'/create-account'"> Create Account </a>
-        <a mat-button [routerLink]="'/contacts'"> Contacts </a>
-        <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
-        <a mat-button [routerLink]="'/activities'"> Activities </a>
-        <a mat-button (click)="logout()"> Logout</a>
-  
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar" [ngClass]="{'active': active_menu}" ng-if="currentUser">
+      <div class="sidebar-header">
+          <h3>Bootstrap Sidebar</h3>
       </div>
-    </mat-toolbar-row>
-  
-  </mat-toolbar>
-  
-  
 
-  <mat-sidenav-container>
-      <mat-sidenav #sidenav>
-        <mat-nav-list>
-    
-          <a mat-list-item [routerLink]="'/accounts'"> Accounts </a>
-          <a mat-list-item [routerLink]="'/create-account'"> Create Account </a>
-          <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
-          <a mat-list-item [routerLink]="'/create-contact'"> Create Contact </a>
-          <a mat-list-item [routerLink]="'/activities'"> Activities </a>
-          <a mat-list-item [routerLink]="'/create-activity'"> Create Activity </a>
-          <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-    
-        </mat-nav-list>
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <div style="height: 88vh;">
-    
-          <router-outlet></router-outlet>
-        </div>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+      <ul class="list-unstyled components">
+          <p>Dummy Heading</p>
+          <li class="active">
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+              <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li>
+                      <a href="#">Home 1</a>
+                  </li>
+                  <li>
+                      <a href="#">Home 2</a>
+                  </li>
+                  <li>
+                      <a href="#">Home 3</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <a href="#">About</a>
+          </li>
+          <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <li>
+                      <a href="#">Page 1</a>
+                  </li>
+                  <li>
+                      <a href="#">Page 2</a>
+                  </li>
+                  <li>
+                      <a href="#">Page 3</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <a href="#">Portfolio</a>
+          </li>
+          <li>
+              <a href="#">Contact</a>
+          </li>
+      </ul>
+
+      <ul class="list-unstyled CTAs">
+          <li>
+              <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+          </li>
+          <li>
+              <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+          </li>
+      </ul>
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+              <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="active_menu=!active_menu">
+                  <i class="fas fa-align-left"></i>
+                  <span>Toggle Sidebar</span>
+              </button>
+              <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fas fa-align-justify"></i>
+              </button>
+              {{active_menu}}
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="nav navbar-nav ml-auto">
+                      <li class="nav-item active">
+                          <a class="nav-link" href="#">Page</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Page</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Page</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">Page</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <router-outlet></router-outlet>
+  </div>
+</div>
+
     

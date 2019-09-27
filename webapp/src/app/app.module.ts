@@ -6,8 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule,
-        MatFormFieldModule, MatInputModule} from '@angular/material';
 
 import {fakeBackendProvider} from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
@@ -25,14 +23,6 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
     ReactiveFormsModule
   ],
   providers: [
