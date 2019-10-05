@@ -23,8 +23,8 @@ export class AuthenticationService {
     login(username: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/login`, { username, password })
             .pipe(map(user => {
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
+                localStorage.setItem('currentUser', JSON.stringify(user.data));
+                this.currentUserSubject.next(user.data);
                 return user;
             }));
     }

@@ -3,6 +3,7 @@ import {createConnection} from "typeorm";
 import {Request, Response} from 'express';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
 import {AppRoutes} from './routes';
 import {isAutenticated} from './middlewares/autenticated';
 
@@ -10,7 +11,7 @@ createConnection().then(async connection => {
 
     const app = express();
     app.use(bodyParser.json());
-
+    app.use(cors());
 
 
     app.listen(3000);

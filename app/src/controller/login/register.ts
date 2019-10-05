@@ -7,9 +7,10 @@ var BCRYPT_SALT_ROUNDS = 12;
 export async function RegisterUser(req: Request, res: Response) {
 
     let user = req.body;
+    let new_user:any = {};
     bcrypt.hash(user.password, BCRYPT_SALT_ROUNDS)
     .then(async hashedPassword=>{
-        const new_user = await getConnection()
+        new_user = await getConnection()
         .createQueryBuilder()
         .insert()
         .into(Usuario)
@@ -23,8 +24,8 @@ export async function RegisterUser(req: Request, res: Response) {
         })
         .execute();
     })
-    .then(function(){
-        res.send();
+    .then(()=>{
+        res.send(new_user.identifiers);
     })
     .catch(err=>{
         console.log(err)

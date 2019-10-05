@@ -19,5 +19,5 @@ export class Certificado {
     usuarios : Usuario;
 
     @ManyToOne(type=>Institucion, institucion => institucion.certificados)
-    instituciones: Institucion;
+    institucion: Institucion;
 }

@@ -17,7 +17,6 @@ export async function loginUser(req: Request, response: Response){
     .from(Usuario, "user")
     .where("user.username = :username", { username: username })
     .getOne();
-
     bcrypt.compare(password, user.password)
     .then(res=>{
         if(res){
@@ -31,7 +30,11 @@ export async function loginUser(req: Request, response: Response){
               })
             
               response.send({
-                token
+                response: true,
+                data: {
+                  usuario_id:user.id,
+                  token: token 
+                }
               })
         } else {
             res.status(401).send({

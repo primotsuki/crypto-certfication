@@ -3,6 +3,7 @@ import {Certificado} from "./certificado";
 import {Rol} from "./rol";
 import {Permiso} from "./permiso";
 import {Institucion} from "./institucion";
+import {Solicitud} from "./solicitud";
 
 @Entity()
 export class Usuario {
@@ -41,4 +42,7 @@ export class Usuario {
 
     @ManyToMany(type=>Institucion, institucion=> institucion.usuarios)
     instituciones: Institucion[];
+
+    @OneToMany(type=> Solicitud, solicitud=>solicitud.usuario)
+    solicitudes: Solicitud[];
 } 
