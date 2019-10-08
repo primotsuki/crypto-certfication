@@ -2,7 +2,7 @@
     id: number;
     username: string;
     password: string;
-    firstName: string;
-    lastName: string;
-    token?: string;
+    apellido_paterno: string;
+    apellido_materno: string;
+    email: string;
 }
