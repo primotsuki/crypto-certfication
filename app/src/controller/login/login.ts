@@ -8,14 +8,14 @@ import * as dotenv from 'dotenv';
 const env = dotenv.config();
 
 export async function loginUser(req: Request, response: Response){
-    var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
 
     const user = await getConnection()
     .createQueryBuilder()
-    .select("user")
+    .select("email")
     .from(Usuario, "user")
-    .where("user.username = :username", { username: username })
+    .where("user.email = :email", { email: email })
     .getOne();
     bcrypt.compare(password, user.password)
     .then(res=>{

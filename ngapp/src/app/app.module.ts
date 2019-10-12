@@ -12,7 +12,6 @@ import { NbThemeModule,
     NbButtonModule,
     NbWindowModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import {NbAuthModule, NbAuthJWTToken, NbAuthJWTInterceptor, NbPasswordAuthStrategy} from '@nebular/auth'
 
 @NgModule({
   declarations: [
@@ -31,19 +30,6 @@ import {NbAuthModule, NbAuthJWTToken, NbAuthJWTInterceptor, NbPasswordAuthStrate
     NbToastrModule.forRoot(),
     NbWindowModule.forRoot(),
     NbButtonModule,
-    NbAuthModule.forRoot({
-      strategies: [
-        NbPasswordAuthStrategy.setup({
-          name: 'email',
-
-          token: {
-            class: NbAuthJWTToken,
-          }
-        }),
-      ],
-      forms: {},
-    
-    })
   ],
   providers: [],
   bootstrap: [AppComponent]

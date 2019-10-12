@@ -5,11 +5,13 @@ import { MENU_ITEMS } from './pages-menu';
     selector: 'ngx-pages',
     styleUrls: ['pages.component.scss'],
     template: `
-        <nb-layout>
-        <h3>hello world!</h3>
-        <nb-menu [items]="menu"></nb-menu>
-        <router-outlet></router-outlet>
-        </nb-layout>
+    <nb-layout>
+    <nb-layout-header fixed>Company Name</nb-layout-header>
+    <nb-sidebar>Sidebar Content</nb-sidebar>
+    <nb-layout-column>
+      <router-outlet></router-outlet>
+    </nb-layout-column>
+  </nb-layout>
     `,
 })
 export class PagesComponent {
