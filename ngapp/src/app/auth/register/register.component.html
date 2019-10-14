@@ -1,1 +1,111 @@
-<p>register works!</p>
+<nb-card>
+    <nb-card-body>
+        <h1 class="text-center">Registro</h1>
+        <p class="text-center">Completa el formulario de Registro</p>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-8">
+                <form [formGroup]="registerForm" (ngSubmit)="OnSubmit()" aria-labelledby="title">
+                    <div class="form-row space-input">
+                        <div class="form-control-group">
+                            <label for="nombre" class="label">Nombres: </label>
+                            <input type="text" name="nombre" nbInput fullWidth
+                                placeholder="Nombre"
+                                formControlName="nombre"
+                                [status]="(submitted && f.nombre.errors)? 'danger': 'success'">
+                            <ng-container *ngIf="submitted && f.nombre.errors">
+                                <p class="error-message"> El Campo es requerido.!</p>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-control-group space-input">
+                            <label for="apellido_paterno" class="label">Apellido Paterno: </label>
+                            <input type="text" name="apellido_paterno"
+                                nbInput
+                                fullWidth
+                                placeholder="Apellido Paterno"
+                                formControlName="apellido_paterno"
+                                [status]="(submitted && f.apellido_paterno.errors)? 'danger': 'success'">
+                            <ng-container *ngIf="submitted && f.apellido_paterno.errors">
+                                <p class="error-message"> El Campo es requerido.!</p>
+                            </ng-container>    
+                        </div>
+                        <div class="form-control-group space-input">
+                            <label for="apellido_materno" class="label">Apellido Materno</label>
+                            <input type="text" name="apellido_materno"
+                                nbInput
+                                fullWidth
+                                placeholder="Apellido Materno"
+                                formControlName="apellido_materno"
+                                [status]="(submitted && f.apellido_materno.errors)? 'danger': 'success'">
+                            <ng-container *ngIf="submitted && f.apellido_materno.errors">
+                                <p class="error-message"> El Campo es requerido.!</p>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-control-group space-input">
+                            <label for="username" class="label"> Nombre de usuario</label>
+                            <input type="text" 
+                                nbInput
+                                fullWidth
+                                placeholder="Nombre de usuario"
+                                formControlName="username"
+                                [status]="(submitted && f.username.errors)? 'danger': 'success'">
+                            <ng-container *ngIf="submitted && f.username.errors">
+                                <p class="error-message"> El Campo es requerido.!</p>
+                            </ng-container>
+                        </div>
+                        <div class="form-control-group space-input">
+                            <label for="email" class="label">Correo Electronico</label>
+                            <input type="text"
+                                nbInput
+                                fullWidth
+                                placeholder="Correo Electronico"
+                                fornControlName="email"
+                                [status]="(submitted && f.email.errors)? 'danger': 'success'">
+                            <ng-container *ngIf="submitted && f.email.errors">
+                                <p class="error-message"> El Campo es requerido.!</p>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-control-group space-input">
+                            <label for="password" class="label">Contraseña</label>
+                            <input type="text"
+                                nbInput
+                                fullWidth
+                                placeholder="Contraseña"
+                                formControlName="password"
+                                [status]="(submitted && f.password.errors)? 'danger': 'success'">
+                            <ng-container *ngIf="submitted && f.password.errors">
+                                <p class="error-message"> El Campo es requerido.!</p>
+                            </ng-container>
+                        </div>
+                        <div class="form-control-group space-input">
+                            <label for="password" class="label">Repita Contraseña</label>
+                            <input type="text"
+                                nbInput
+                                fullWidth
+                                placeholder="Repita Contraseña"
+                                formControlName="repeatPassword"
+                                [status]="(submitted && f.repeatPassword.errors)? 'danger': 'success'">
+                            <ng-container *ngIf="submitted && f.repeatPassword.errors">
+                                <p class="error-message"> El Campo es requerido.!</p>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                            <button nbButton
+                            fullWidth
+                            status="success"
+                            type="submit"
+                            >
+                      Registrar
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
