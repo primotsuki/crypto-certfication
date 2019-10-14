@@ -92,9 +92,18 @@
   <nb-card>
     <nb-card-header>Nebula</nb-card-header>
     <nb-card-body>
-      A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-      Originally, nebula was a name for any diffuse astronomical object,
-      including galaxies beyond the Milky Way.
+      <h1 class="text-center">Login</h1>
+      <p class="text-center">Hello! Log in with your email.</p>
+      <form [formGroup]="loginForm">
+
+          <div class="form-group">
+            <label for="emailtxt" class="label control-label">Correo electronico</label>
+            <input type="text" id="emailtxt" nbInput placeholder="Correo Electronico">
+          </div>
+          <div>
+
+          </div>
+      </form>
     </nb-card-body>
     <nb-card-footer>By Wikipedia</nb-card-footer>
   </nb-card>
