@@ -10,10 +10,9 @@ const env = dotenv.config();
 export async function loginUser(req: Request, response: Response){
     var email = req.body.email;
     var password = req.body.password;
-
     const user = await getConnection()
     .createQueryBuilder()
-    .select("email")
+    .select("user")
     .from(Usuario, "user")
     .where("user.email = :email", { email: email })
     .getOne();
@@ -21,7 +20,7 @@ export async function loginUser(req: Request, response: Response){
     .then(res=>{
         if(res){
             var tokenData = {
-                username: user.username,
+                email: user.email,
                 id: user.id
               }
             

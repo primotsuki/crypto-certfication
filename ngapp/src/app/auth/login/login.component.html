@@ -5,36 +5,38 @@
       <h1 class="text-center">Login</h1>
       <p class="text-center">Bienvenido. Ingrese con su email</p>
       <div class="row justify-content-center align-items-center">
-        <div class="form-row space-group">
-          <label for="email" class="label">Correo Electronico</label>
-          <input type="text" name="email" nbInput fullWidth
-            placeholder="Correo Electronico"
-            formControlName="email"
-            [status]="(submitted && f.email.errors)? 'danger': 'success'">
-          <ng-container>
-            <p class="error-message">El campo es necesario. !</p>
-          </ng-container>
-        </div>
-        <div class="form-row">
-          <label for="password" class="label">Contraseña</label>
-          <input type="text" name="password" nbInput fullWidth
-            placeholder="Contraseña"
-            formControlName="password"
-            [status]="(submitted && f.password.errors)? 'danger': 'success'">
-          <ng-container>
-            <p class="error-message"></p>
-          </ng-container>
-        </div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="form-row space-group">
+                  <label for="email" class="label">Correo Electronico</label>
+                  <input type="text" name="email" nbInput fullWidth
+                    placeholder="Correo Electronico"
+                    formControlName="email"
+                    [status]="(submitted && f.email.errors)? 'danger': 'success'">
+                  <ng-container *ngIf="submitted && f.email.errors">
+                    <p class="error-message">El campo es necesario. !</p>
+                  </ng-container>
+                </div>
+                <div class="form-row">
+                  <label for="password" class="label">Contraseña</label>
+                  <input type="password" name="password" nbInput fullWidth
+                    placeholder="Contraseña"
+                    formControlName="password"
+                    [status]="(submitted && f.password.errors)? 'danger': 'success'">
+                  <ng-container *ngIf="submitted && f.password.errors">
+                    <p class="error-message"></p>
+                  </ng-container>
+                </div>
+                <div class="form-row">
+                    <button nbButton
+                      fullWidth
+                      status="success"
+                      type="submit"
+                      >
+                      Registrar
+                    </button>
+                </div>
+          </form>
       </div>
-      <form [formGroup]="loginForm">
-          <div class="form-group">
-            <label for="emailtxt" class="label control-label">Correo electronico</label>
-            <input type="text" id="emailtxt" nbInput placeholder="Correo Electronico">
-          </div>
-          <div>
-
-          </div>
-      </form>
     </nb-card-body>
     <nb-card-footer>By Wikipedia</nb-card-footer>
   </nb-card>

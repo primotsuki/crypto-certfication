@@ -62,7 +62,7 @@
                                 nbInput
                                 fullWidth
                                 placeholder="Correo Electronico"
-                                fornControlName="email"
+                                formControlName="email"
                                 [status]="(submitted && f.email.errors)? 'danger': 'success'">
                             <ng-container *ngIf="submitted && f.email.errors">
                                 <p class="error-message"> El Campo es requerido.!</p>
@@ -72,7 +72,7 @@
                     <div class="form-row">
                         <div class="form-control-group space-input">
                             <label for="password" class="label">Contraseña</label>
-                            <input type="text"
+                            <input type="password"
                                 nbInput
                                 fullWidth
                                 placeholder="Contraseña"
@@ -84,7 +84,7 @@
                         </div>
                         <div class="form-control-group space-input">
                             <label for="password" class="label">Repita Contraseña</label>
-                            <input type="text"
+                            <input type="password"
                                 nbInput
                                 fullWidth
                                 placeholder="Repita Contraseña"
