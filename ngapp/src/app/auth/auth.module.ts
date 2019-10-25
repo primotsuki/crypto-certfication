@@ -5,7 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {AuthRoutingModule} from './auth-routing.module';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
 import { AuthComponent} from './auth.component';
 import {
   NbLayoutModule,

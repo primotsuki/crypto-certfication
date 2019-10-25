@@ -25,7 +25,7 @@ export async function RegisterUser(req: Request, res: Response) {
         .execute();
     })
     .then(()=>{
-        res.send(new_user.identifiers);
+        res.send(new_user.identifiers[0]);
     })
     .catch(err=>{
         console.log(err)

@@ -18,7 +18,7 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  registerUser(user: any){
+  public registerUser(user: any){
     return this.http.post<any>(`${environment.apiUrl}/register`, user).toPromise();
   }
 
