@@ -4,7 +4,12 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import {NbMenuModule,
   NbLayoutModule,
-  NbSidebarModule
+  NbSidebarModule,
+  NbAlertModule,
+  NbButtonModule,
+  NbCheckboxModule,
+  NbInputModule,
+  NbCardModule
   } from '@nebular/theme';
 
 
@@ -14,7 +19,12 @@ import {NbMenuModule,
     PagesRoutingModule,
     NbMenuModule,
     NbLayoutModule,
-    NbSidebarModule
+    NbSidebarModule,
+    NbAlertModule,
+    NbButtonModule,
+    NbCheckboxModule,
+    NbInputModule,
+    NbCardModule
   ]
 })
 export class PagesModule { }

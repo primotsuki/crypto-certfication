@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import * as jwt from "jsonwebtoken";
-import {getConnection} from "typeorm";
+import {getManager} from "typeorm";
 import {Usuario} from '../../entity/usuario';
 import * as bcrypt from "bcrypt";
 import * as dotenv from 'dotenv';
@@ -10,11 +10,9 @@ const env = dotenv.config();
 export async function loginUser(req: Request, response: Response){
     var email = req.body.email;
     var password = req.body.password;
-    const user = await getConnection()
-    .createQueryBuilder()
-    .select("user")
-    .from(Usuario, "user")
-    .where("user.email = :email", { email: email })
+    const user = await getManager()
+    .createQueryBuilder(Usuario, "usuario")
+    .where("usuario.email = :email", { email: email })
     .getOne();
     bcrypt.compare(password, user.password)
     .then(res=>{
@@ -39,7 +37,7 @@ export async function loginUser(req: Request, response: Response){
             res.status(401).send({
                 error: 'usuario o contraseña inválidos'
               })
-              return
+              return;
         }
     })
 }

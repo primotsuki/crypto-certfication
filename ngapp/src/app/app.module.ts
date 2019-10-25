@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { JWTInterceptor } from '../app/core/jwt.interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule,
     NbLayoutModule,
@@ -31,7 +32,9 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbWindowModule.forRoot(),
     NbButtonModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
