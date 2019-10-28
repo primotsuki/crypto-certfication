@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 const env = dotenv.config()
 
 export async function isAutenticated( req: Request, res: Response, next) {
-    if(req.path!='/login' || req.path!='/register') {
+    if(req.path=='/login' || req.path=='/register') {
       next();
     } else {
       var token = req.headers['authorization'];

@@ -1,6 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
 import {tipoSolicitud} from "./tipo_solicitud";
 import {EstadoSolicitud} from "./estadoSolicitud";
+import {Certificado} from "./certificado";
 import {Institucion} from "./institucion";
 import {Usuario} from "./usuario";
 
@@ -14,6 +15,9 @@ export class Solicitud {
 
     @Column({type:"datetime"})
     createdAt: Date;
+
+    @ManyToOne(type=>Certificado, certificado=>certificado.solicitudes)
+    certificado: Certificado;
 
     @ManyToOne(type=>tipoSolicitud, tiposolicitud=>tiposolicitud.solicitudes)
     tipoSolicitud: tipoSolicitud;

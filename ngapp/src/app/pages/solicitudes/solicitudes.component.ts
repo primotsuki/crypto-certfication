@@ -14,6 +14,7 @@ export class SolicitudesComponent implements OnInit {
   submitted = false;
   error: any;
   instituciones: any[];
+  tipoSolicitudes: any[];
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -25,15 +26,37 @@ export class SolicitudesComponent implements OnInit {
     this.SolicitudForm = this.formBuilder.group({
       motivo: ['', Validators.required],
       tipo_solicitud_id: ['', Validators.required],
-      tipo_solicitud: ['', Validators.required],
       institucion_id: ['', Validators.required],
-      nombre_institucion: ['', Validators.required]
+      certificado_id: [null]
     });
     this.getinstituciones();
+    this.getTipoSolicitudes();
   }
+  get f() { return this.SolicitudForm.controls; }
   getinstituciones() {
     this.pagesService.getInstituciones().subscribe(data => {
       this.instituciones = data.data;
     });
+  }
+  getTipoSolicitudes() {
+    this.pagesService.getTipoSolicitud().subscribe(data => {
+      this.tipoSolicitudes = data.data;
+    });
+  }
+  OnSubmit() {
+    this.submitted = true;
+    if (this.SolicitudForm.invalid) {
+      return;
+    } else {
+      const solicitud = {
+        tipoSolicitudId: this.f.tipo_solicitud_id.value,
+        institucionId: this.f.institucion_id.value,
+        certificadoId: this.f.certificado_id.value,
+        motivo: this.f.motivo.value
+      };
+      this.pagesService.createSolicitud(solicitud).subscribe(data => {
+        console.log(data.data);
+      });
+    }
   }
 }

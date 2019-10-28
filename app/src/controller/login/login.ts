@@ -34,7 +34,7 @@ export async function loginUser(req: Request, response: Response){
                 }
               })
         } else {
-            res.status(401).send({
+            response.status(401).send({
                 error: 'usuario o contraseña inválidos'
               })
               return;

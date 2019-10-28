@@ -16,4 +16,10 @@ export class PagesService {
   public getInstituciones() {
     return this.http.get<any>(`${environment.apiUrl}/instituciones`);
   }
+  public getTipoSolicitud() {
+    return this.http.get<any>(`${environment.apiUrl}/tipo_solicitudes`);
+  }
+  public createSolicitud(solicitud: any) {
+    return this.http.post<any>(`${environment.apiUrl}/solicitud`, solicitud);
+  }
 }
