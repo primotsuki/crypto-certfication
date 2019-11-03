@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {AuthService} from '../auth.service';
+import { NbToastrService, NbGlobalPhysicalPosition } from '@nebular/theme';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastrService: NbToastrService
   ) {
   }
   ngOnInit() {
@@ -35,9 +37,14 @@ export class LoginComponent implements OnInit {
     const user = {
       email: this.f.email.value,
       password: this.f.password.value
-    }
-    this.authService.login(user).subscribe(data=>{
-      console.log(data);
-    })
+    };
+    this.authService.login(user).subscribe(data => {
+      this.toastrService.show(
+        'Login',
+        'login Successfully',
+        {position: NbGlobalPhysicalPosition.TOP_RIGHT, status: 'success' }
+      );
+      this.router.navigate(['/pages']);
+    });
   }
 }

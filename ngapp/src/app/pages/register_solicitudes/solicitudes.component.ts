@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {PagesService} from '../pages.service';
+import { NbToastrService, NbGlobalPhysicalPosition } from '@nebular/theme';
 
 @Component({
   selector: 'app-solicitudes',
@@ -19,7 +20,8 @@ export class SolicitudesComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private pagesService: PagesService
+    private pagesService: PagesService,
+    private toastrService: NbToastrService
   ) { }
 
   ngOnInit() {
@@ -55,7 +57,12 @@ export class SolicitudesComponent implements OnInit {
         motivo: this.f.motivo.value
       };
       this.pagesService.createSolicitud(solicitud).subscribe(data => {
-        console.log(data.data);
+        this.toastrService.success(
+          'Solicitud',
+          'Solicitud registrada con exito',
+          {position: NbGlobalPhysicalPosition.TOP_RIGHT, status: 'success'}
+        );
+        this.ngOnInit();
       });
     }
   }

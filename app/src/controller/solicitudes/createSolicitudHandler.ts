@@ -3,6 +3,7 @@ import {getConnection} from "typeorm";
 import {Solicitud} from '../../entity/solicitud';
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
+import { addListener } from "cluster";
 const env = dotenv.config()
 export async function CreateSolicitud(req: Request, res: Response) {
 
@@ -12,11 +13,7 @@ export async function CreateSolicitud(req: Request, res: Response) {
     token = token.replace('Bearer ', '');
 
     var user_decoded = jwt.verify(token,  process.env.JWT_SECRET_KEY);
-    solicitud.usuarioId= user_decoded.id;
     solicitud.createdAt = new Date();
-    solicitud.estadoSolicitudId = 4;
-    console.log(solicitud);
-
     try {
         new_solicitud = await getConnection()
                     .createQueryBuilder()
@@ -24,16 +21,29 @@ export async function CreateSolicitud(req: Request, res: Response) {
                     .into(Solicitud)
                     .values(solicitud)
                     .execute();
+        let solicitud_id = new_solicitud.identifiers[0].id;
+        updateRelation("tipoSolicitud", solicitud_id, solicitud.tipoSolicitudId);
+        updateRelation("usuario", solicitud_id, user_decoded.id);
+        updateRelation("institucion", solicitud_id, solicitud.institucionId);
+        updateRelation("estadoSolicitud", solicitud_id, 4);
         
-                    res.send({
-                        status: true,
-                        data: new_solicitud
-                    });
+            res.send({
+            status: true,
+            id: solicitud_id
+        });
     }
     catch (e) {
+        console.log(e);
         res.status(500).send({
             error: e
         })
         return;
     }
+}
+async function updateRelation(relation: string, solicitud_id: number, id: number) {
+    await getConnection()
+            .createQueryBuilder()
+            .relation(Solicitud, relation)
+            .of(solicitud_id)
+            .set(id);
 }

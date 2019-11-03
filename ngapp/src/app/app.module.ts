@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { JWTInterceptor } from '../app/core/jwt.interceptors';
+import { ErrorInterceptor } from '../app/core/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule,
     NbLayoutModule,
@@ -36,7 +37,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbButtonModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -22,4 +22,7 @@ export class PagesService {
   public createSolicitud(solicitud: any) {
     return this.http.post<any>(`${environment.apiUrl}/solicitud`, solicitud);
   }
+  public getSolicitudesUsuario(id: number) {
+    return this.http.get<any>(`${environment.apiUrl}/solicitudes/${id}`);
+  }
 }

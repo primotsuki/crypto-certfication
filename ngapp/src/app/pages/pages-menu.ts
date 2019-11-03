@@ -12,7 +12,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     },{
         title: 'Mis Solicitudes',
         icon: 'inbox-outline',
-        link: '/pages/mis-solicitudes'
+        link: '/pages/mis_solicitudes'
     },{
         title: 'Mis certificados',
         icon: 'folder-outline',

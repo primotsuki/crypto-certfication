@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SolicitudesComponent } from './solicitudes/solicitudes.component';
+import { SolicitudesComponent } from './register_solicitudes/solicitudes.component';
 import {CommonModule} from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
@@ -12,12 +12,15 @@ import {NbMenuModule,
   NbCheckboxModule,
   NbInputModule,
   NbCardModule,
-  NbSelectModule
+  NbSelectModule,
+  NbToastrModule,
   } from '@nebular/theme';
+import { config } from 'rxjs';
+import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.component';
 
 
 @NgModule({
-  declarations: [SolicitudesComponent, PagesComponent],
+  declarations: [SolicitudesComponent, PagesComponent, MisSolicitudesComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -31,7 +34,8 @@ import {NbMenuModule,
     NbCardModule,
     NbSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NbToastrModule.forRoot()
   ]
 })
 export class PagesModule { }

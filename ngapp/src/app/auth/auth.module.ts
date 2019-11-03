@@ -13,7 +13,8 @@ import {
   NbButtonModule,
   NbCheckboxModule,
   NbInputModule,
-  NbCardModule
+  NbCardModule,
+  NbToastrModule
 } from '@nebular/theme';
 
 @NgModule({
@@ -30,7 +31,8 @@ import {
     NbButtonModule,
     NbCheckboxModule,
     AuthRoutingModule,
-    NbCardModule
+    NbCardModule,
+    NbToastrModule.forRoot()
   ]
 })
 export class AuthModule { }
