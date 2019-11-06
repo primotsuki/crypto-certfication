@@ -21,5 +21,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Validar certificado',
         icon: 'search-outline',
         link: '/pages/validar'
+    },{
+        title: 'Solicitudes pendientes',
+        icon: 'email-outline',
+        link: '/pages/pendientes'
+    },{
+        title: 'Emitir certificado',
+        icon: 'file-add-outline',
+        link: '/pages/certificar'
+    },{
+        title: 'Revocar certificado',
+        icon: 'file-remove-outline',
+        link: '/pages/revocar'
     }
 ]

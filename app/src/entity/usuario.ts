@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, ManyToOne} from "typeorm";
 import {Certificado} from "./certificado";
 import {Rol} from "./rol";
 import {Permiso} from "./permiso";
@@ -34,8 +34,8 @@ export class Usuario {
     @OneToMany(type=> Certificado, certificado => certificado.usuarios)
     certificados : Certificado[];
 
-    @ManyToMany(type=>Rol, rol=> rol.usuarios)
-    roles: Rol[];
+    @ManyToOne(type=>Rol, rol=> rol.usuarios)
+    rol: Rol[];
 
     @ManyToMany(type=>Permiso, permiso=> permiso.usuarios)
     permisos: Permiso[];

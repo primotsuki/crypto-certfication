@@ -19,7 +19,7 @@ createConnection().then(async connection => {
     app.use(isAutenticated);
     AppRoutes.forEach(route => {
         app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-            route.action(request, response)
+            route.action(request, response, next)
                 .then(() => next)
                 .catch(err => next(err));
         });

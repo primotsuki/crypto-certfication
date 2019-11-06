@@ -15,10 +15,12 @@ import { NbThemeModule,
     NbButtonModule,
     NbWindowModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { CertificadoRevocacionComponent } from './certificado-revocacion/certificado-revocacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CertificadoRevocacionComponent,
   ],
   imports: [
     BrowserModule,

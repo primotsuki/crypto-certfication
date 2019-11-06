@@ -13,7 +13,7 @@ export class Solicitud {
     @Column()
     motivo: string;
 
-    @Column({type:"datetime"})
+    @Column({type:"datetime",default: () => "CURRENT_TIMESTAMP"})
     createdAt: Date;
 
     @ManyToOne(type=>Certificado, certificado=>certificado.solicitudes)

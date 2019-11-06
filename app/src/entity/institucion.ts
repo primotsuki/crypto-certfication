@@ -17,6 +17,9 @@ export class Institucion {
 
     @Column()
     direccion: string;
+    
+    @Column()
+    sigla: string;
 
     @OneToMany(type=> Certificado, certificado => certificado.institucion)
     certificados : Certificado[];

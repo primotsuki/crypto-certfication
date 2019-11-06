@@ -1,7 +1,7 @@
 import {RegisterUser} from "./controller/login/register";
 import {loginUser} from "./controller/login/login";
 import {getInstitucion} from "./controller/instituciones/InstitucionesHandler";
-import {getTipoSolicitud} from "./controller/tipo_solicitudes/GetTipoSolicitudHandler";
+import {getTipoSolicitud} from "./controller/tipo_solicitudes/getTipoSolicitudHandler";
 import {CreateSolicitud} from "./controller/solicitudes/createSolicitudHandler";
 import {getUsuarioSolicitud} from "./controller/solicitudes/getUsuarioSolcitud";
 export const AppRoutes = [
