@@ -10,7 +10,7 @@ export class Rol {
     @Column()
     detalle: string;
 
-    @Column({type:"datetime"})
+    @Column({type:"datetime", default: () => "CURRENT_TIMESTAMP"})
     createdAt: Date;
 
     @ManyToMany(type=> Permiso, permiso=>permiso.roles)
