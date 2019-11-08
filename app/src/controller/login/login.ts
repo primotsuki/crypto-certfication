@@ -12,8 +12,11 @@ export async function loginUser(req: Request, response: Response){
     var password = req.body.password;
     const user = await getManager()
     .createQueryBuilder(Usuario, "usuario")
+    .leftJoinAndSelect("usuario.rol","rol")
+    .leftJoinAndSelect("usuario.instituciones", "instituciones")
     .where("usuario.email = :email", { email: email })
     .getOne();
+    console.log(user);
     bcrypt.compare(password, user.password)
     .then(res=>{
         if(res){
@@ -30,7 +33,9 @@ export async function loginUser(req: Request, response: Response){
                 response: true,
                 data: {
                   usuario_id:user.id,
-                  token: token 
+                  token: token,
+                  rol: user.rol,
+                  institucion: user.instituciones
                 }
               })
         } else {

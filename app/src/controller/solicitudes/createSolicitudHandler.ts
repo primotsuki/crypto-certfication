@@ -3,7 +3,6 @@ import {getConnection} from "typeorm";
 import {Solicitud} from '../../entity/solicitud';
 import * as jwt from 'jsonwebtoken';
 import * as dotenv from 'dotenv';
-import { addListener } from "cluster";
 const env = dotenv.config()
 export async function CreateSolicitud(req: Request, res: Response) {
 
@@ -25,7 +24,7 @@ export async function CreateSolicitud(req: Request, res: Response) {
         updateRelation("tipoSolicitud", solicitud_id, solicitud.tipoSolicitudId);
         updateRelation("usuario", solicitud_id, user_decoded.id);
         updateRelation("institucion", solicitud_id, solicitud.institucionId);
-        updateRelation("estadoSolicitud", solicitud_id, 4);
+        updateRelation("estadoSolicitud", solicitud_id, 1);
         
             res.send({
             status: true,

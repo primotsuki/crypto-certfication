@@ -16,6 +16,7 @@ import { NbThemeModule,
     NbWindowModule} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { CertificadoRevocacionComponent } from './certificado-revocacion/certificado-revocacion.component';
+import {MomentModule} from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { CertificadoRevocacionComponent } from './certificado-revocacion/certifi
     NbSidebarModule.forRoot(),
     NbToastrModule.forRoot(),
     NbWindowModule.forRoot(),
-    NbButtonModule,
+    NbButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true},

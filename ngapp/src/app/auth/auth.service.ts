@@ -38,4 +38,10 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+  public get currentInstitucion() {
+    return this.currentUserValue.institucion[0].id
+  }
+  public get currentRol() {
+    return this.currentUserValue.rol.id
+  }
 }

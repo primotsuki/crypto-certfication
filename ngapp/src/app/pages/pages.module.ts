@@ -14,7 +14,10 @@ import {NbMenuModule,
   NbCardModule,
   NbSelectModule,
   NbToastrModule,
+  NbIconModule,
+  NbTooltipModule
   } from '@nebular/theme';
+import {MomentModule} from 'ngx-moment';
 import { config } from 'rxjs';
 import { MisSolicitudesComponent } from './mis-solicitudes/mis-solicitudes.component';
 import { SolicitudesPendientesComponent } from './solicitudes-pendientes/solicitudes-pendientes.component';
@@ -37,9 +40,16 @@ import { CertificadovalidacionComponent } from './certificadovalidacion/certific
     NbInputModule,
     NbCardModule,
     NbSelectModule,
+    NbIconModule,
+    NbTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    NbToastrModule.forRoot()
+    NbToastrModule.forRoot(),
+    MomentModule.forRoot({
+      relativeTimeThresholdOptions: {
+        'm': 59
+      }
+    })
   ]
 })
 export class PagesModule { }

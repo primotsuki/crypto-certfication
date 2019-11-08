@@ -7,10 +7,15 @@
 <div class="row">
     <div class="col-sm-12 col-md-4" *ngFor="let solicitud of solicitudes">
         <nb-card accent="info">
-            <nb-card-header>{{solicitud.institucion.nombre}}</nb-card-header>
+            <nb-card-header>{{solicitud.tipoSolicitud.descripcion_solicitud}}</nb-card-header>
             <nb-card-body>
-              {{solicitud.tipoSolicitud.descripcion_solicitud}}
+             Estudiante: {{solicitud.usuario.nombre}} {{solicitud.usuario.apellido_paterno}} {{solicitud.usuario.apellido_materno}}
+              Motivo: {{solicitud.motivo}}
+              Fecha de Solicitud: {{solicitud.createdAt | amDateFormat: 'LL'}}
             </nb-card-body>
+            <nb-card-footer>
+                <button nbButton nbTooltip="Generar certificado" nbTooltipStatus="primary" ghost status="success"><nb-icon icon="checkmark-circle-outline"></nb-icon></button>
+            </nb-card-footer>
           </nb-card>
     </div>
 </div>

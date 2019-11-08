@@ -25,7 +25,7 @@ export class PagesService {
   public getSolicitudesUsuario(id: number) {
     return this.http.get<any>(`${environment.apiUrl}/solicitudes/${id}`);
   }
-  public getSolicitudesInstitucion(id: number) {
-    return this.http.get<any>(`${environment.apiUrl}/certifier/solicitud/${id}`);
+  public getSolicitudesInstitucion(institucion_id: number) {
+    return this.http.get<any>(`${environment.apiUrl}/institucion/${institucion_id}/solicitudes/1`);
   }
 }

@@ -12,7 +12,7 @@ export class Institucion {
     @Column()
     nombre: string;
 
-    @Column()
+    @Column({nullable: true})
     wallet: string;
 
     @Column()

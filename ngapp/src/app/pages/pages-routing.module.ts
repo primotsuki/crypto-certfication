@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {PagesComponent} from './pages.component';
 import {SolicitudesComponent} from './register_solicitudes/solicitudes.component';
 import {MisSolicitudesComponent} from './mis-solicitudes/mis-solicitudes.component';
+import {SolicitudesPendientesComponent} from './solicitudes-pendientes/solicitudes-pendientes.component';
 
 const routes: Routes =[{
     path: '',
@@ -14,6 +15,9 @@ const routes: Routes =[{
         }, {
             path: 'mis_solicitudes',
             component: MisSolicitudesComponent
+        }, {
+            path: 'pendientes',
+            component: SolicitudesPendientesComponent
         }
     ]
     }];
