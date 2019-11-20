@@ -16,7 +16,6 @@ export async function loginUser(req: Request, response: Response){
     .leftJoinAndSelect("usuario.instituciones", "instituciones")
     .where("usuario.email = :email", { email: email })
     .getOne();
-    console.log(user);
     bcrypt.compare(password, user.password)
     .then(res=>{
         if(res){

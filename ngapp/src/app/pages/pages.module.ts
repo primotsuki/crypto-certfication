@@ -15,7 +15,8 @@ import {NbMenuModule,
   NbSelectModule,
   NbToastrModule,
   NbIconModule,
-  NbTooltipModule
+  NbTooltipModule,
+  NbDatepickerModule
   } from '@nebular/theme';
 import {MomentModule} from 'ngx-moment';
 import { config } from 'rxjs';
@@ -44,6 +45,7 @@ import { CertificadovalidacionComponent } from './certificadovalidacion/certific
     NbTooltipModule,
     FormsModule,
     ReactiveFormsModule,
+    NbDatepickerModule.forRoot(),
     NbToastrModule.forRoot(),
     MomentModule.forRoot({
       relativeTimeThresholdOptions: {

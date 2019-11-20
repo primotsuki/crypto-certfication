@@ -7,7 +7,7 @@ export class Relations1573224090513 implements MigrationInterface {
         await getConnection()
                     .createQueryBuilder()
                     .relation(Usuario,"instituciones")
-                    .of(1)
+                    .of(2)
                     .add(1);
     }
 

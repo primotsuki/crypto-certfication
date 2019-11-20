@@ -14,7 +14,7 @@
               Fecha de Solicitud: {{solicitud.createdAt | amDateFormat: 'LL'}}
             </nb-card-body>
             <nb-card-footer>
-                <button nbButton nbTooltip="Generar certificado" nbTooltipStatus="primary" ghost status="success"><nb-icon icon="checkmark-circle-outline"></nb-icon></button>
+                <button nbButton nbTooltip="Generar certificado" nbTooltipStatus="primary" ghost status="success" [routerLink]="['/pages',solicitud.usuario.id,'emitir_certificado', solicitud.id]"><nb-icon icon="checkmark-circle-outline"></nb-icon></button>
             </nb-card-footer>
           </nb-card>
     </div>

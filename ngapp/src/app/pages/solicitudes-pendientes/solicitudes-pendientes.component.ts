@@ -22,7 +22,6 @@ export class SolicitudesPendientesComponent implements OnInit {
   getSolicitudes() {
     this.pageService.getSolicitudesInstitucion(this.authService.currentInstitucion).subscribe(data=>{
       this.solicitudes = data.data;
-      console.log(this.solicitudes);
     });
   }
 }

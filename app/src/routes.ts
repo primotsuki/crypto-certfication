@@ -5,6 +5,7 @@ import {getTipoSolicitud} from "./controller/tipo_solicitudes/getTipoSolicitudHa
 import {CreateSolicitud} from "./controller/solicitudes/createSolicitudHandler";
 import {getUsuarioSolicitud} from "./controller/solicitudes/getUsuarioSolcitud";
 import {getSolicitudInstitucion} from './controller/solicitudes/getInstitucionesSolicitud';
+import {getUsuarioData} from './controller/persona/getUserHandler';
 export const AppRoutes = [
   {
       path: "/register",
@@ -34,5 +35,9 @@ export const AppRoutes = [
     path: "/institucion/:institucion_id/solicitudes/:estado_id/",
     method: "get",
     action: getSolicitudInstitucion
+  }, {
+    path: "/usuario/:user_id",
+    method: "get",
+    action: getUsuarioData
   }
 ];
