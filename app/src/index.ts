@@ -6,13 +6,18 @@ import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import {AppRoutes} from './routes';
 import {isAutenticated} from './middlewares/autenticated';
+import * as IPFS from 'ipfs';
 
 createConnection().then(async connection => {
 
     const app = express();
     app.use(bodyParser.json());
     app.use(cors());
+    const node = new IPFS();
 
+    node.on('ready', ()=>{
+        console.log("IPFS node is Ready !!");
+    })
 
     app.listen(3000);
     console.log("Express Aplication is up and running on port 3000");
