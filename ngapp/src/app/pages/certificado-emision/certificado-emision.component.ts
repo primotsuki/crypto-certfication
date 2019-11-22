@@ -33,7 +33,7 @@ export class CertificadoEmisionComponent implements OnInit {
         alumno_id: [params.user_id],
         alumno_nombre: ['', Validators.required],
         alumno_dni: ['', Validators.required],
-        institucion_id: ['', Validators.required],
+        institucion_id: [''],
         institucion_nombre: ['', Validators.required],
         tipo_solicitud_id: [1],
         wallet: ['', Validators.required],
@@ -47,11 +47,11 @@ export class CertificadoEmisionComponent implements OnInit {
     this.pagesService.getDatosUsuario(this.f.alumno_id.value).subscribe(data=>{
       console.log(data);
       this.f.institucion_nombre.setValue(data.data.instituciones[0].nombre);
-      this.f.institucion_id.setValue(data.data.instituciones[0].institiducion_id);
+      this.f.institucion_id.setValue(data.data.instituciones[0].id);
       this.f.alumno_nombre.setValue(`${data.data.nombre} ${data.data.apellido_paterno} ${data.data.apellido_materno}`)
     });
   }
-  Osubmit() {
+  OnSubmit() {
     this.submitted = true;
     if (this.CertForm.invalid) {
       return;
@@ -68,6 +68,9 @@ export class CertificadoEmisionComponent implements OnInit {
         wallet: this.f.wallet.value,
         solicitud_id: this.f.solicitud_id.value
       }
+      this.pagesService.createCertificate(certificado).subscribe(data=>{
+        console.log(data);
+      })
     }
   }
 

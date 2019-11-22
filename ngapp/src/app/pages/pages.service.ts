@@ -31,4 +31,7 @@ export class PagesService {
   public getDatosUsuario(user_id: number) {
     return this.http.get<any>(`${environment.apiUrl}/usuario/${user_id}`);
   }
+  public createCertificate(certificado: any) {
+    return this.http.post<any>(`${environment.apiUrl}/certificado/create`, certificado);
+  }
 }

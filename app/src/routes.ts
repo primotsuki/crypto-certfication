@@ -6,6 +6,7 @@ import {CreateSolicitud} from "./controller/solicitudes/createSolicitudHandler";
 import {getUsuarioSolicitud} from "./controller/solicitudes/getUsuarioSolcitud";
 import {getSolicitudInstitucion} from './controller/solicitudes/getInstitucionesSolicitud';
 import {getUsuarioData} from './controller/persona/getUserHandler';
+import {CreateCertificado} from "./controller/certificado/CreateCertificado";
 export const AppRoutes = [
   {
       path: "/register",
@@ -39,5 +40,9 @@ export const AppRoutes = [
     path: "/usuario/:user_id",
     method: "get",
     action: getUsuarioData
+  }, {
+    path: "/certificado/create",
+    method: "post",
+    action: CreateCertificado
   }
 ];

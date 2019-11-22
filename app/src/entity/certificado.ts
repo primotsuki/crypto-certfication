@@ -13,7 +13,7 @@ export class Certificado {
     @Column()
     certificate_hash: string;
 
-    @Column()
+    @Column({type: "json"})
     json_data: string;
 
     @Column({type:"datetime",default: () => "CURRENT_TIMESTAMP"})
