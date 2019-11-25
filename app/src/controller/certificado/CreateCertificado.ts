@@ -4,7 +4,7 @@ import {Certificado} from "../../entity/certificado";
 import * as IPFS from 'ipfs';
 export async function CreateCertificado(req: Request, res: Response, next) {
     let certificado = req.body;
-    const node = new IPFS();
+        const node = new IPFS();
     node.on('ready', ()=>{
         node.add(Buffer.from(JSON.stringify(certificado)), async (err, ipfsRes)=>{
             const new_certificado = await getConnection()
@@ -30,7 +30,7 @@ export async function CreateCertificado(req: Request, res: Response, next) {
             });
             node.stop();
         });
-    });
+    });   
 }
 async function updateRelation(relation: string, certificado_id: number, id: number) {
     await getConnection()
