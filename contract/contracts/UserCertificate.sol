@@ -43,7 +43,7 @@ contract UserCertificates {
 		return true;
 	}
 
-	event CertificateIssued(address indexed _from, address indexed _to, string _ipfsHash);
+	event CertificateIssued(address indexed _from, address indexed _to, string _ipfsHash, uint index);
 	event CertificateRevoked(address indexed _from, address indexed _to, string _ipfsHash);
 
 	 constructor() public {
@@ -74,20 +74,20 @@ contract UserCertificates {
 	}
 
 	//Adds a certificate (sender + hash) to a user
-	function addCertificate(address user, string memory ipfsHash) public payable costs(price) {
+	function addCertificate(address user, string memory ipfsHash) public {
 
 		//check the sender and receiver are different
-		require (msg.sender != user);
+		require (msg.sender != user, 'no puedes autogenerarte un certificado');
 
 		//check certificate doesn't exist
-		require(!certificateExists(ipfsHash));
+		require(!certificateExists(ipfsHash), 'El certificado ya fue registrado');
 
 		//add certificate
-		userCertificates[user].push(Certificate(msg.sender, ipfsHash));
+		uint length = userCertificates[user].push(Certificate(msg.sender, ipfsHash));
 		certificates[ipfsHash] = true;
 
 		//trigger event
-	    emit CertificateIssued(msg.sender, user, ipfsHash);
+	    emit CertificateIssued(msg.sender, user, ipfsHash, length-1);
 	}
 
 	//Revokes previously added certificate

@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PagesService} from '../pages.service';
 import {NbToastrService, NbGlobalPhysicalPosition} from '@nebular/theme';
+import {WEB3} from '../../core/web3';
+import Web3 from 'web3';
+import contract from 'truffle-contract';
+import { on } from 'cluster';
+const certification_artifacts = require('../../../../../contract/build/contracts/UserCertificatesAbi.json');
 @Component({
   selector: 'app-certificado-emision',
   templateUrl: './certificado-emision.component.html',
@@ -14,16 +19,23 @@ export class CertificadoEmisionComponent implements OnInit {
   submitted = false;
   error: any;
   solicitud_id: number;
-
+  contractAdress: string = '0xAD720c3045a492c27b76696F9C3137801dA572eF';
+  myAdress: string = '';
+  certificationIssuedEvent: any;
+  certification: any;
+  transactionHash: string;
+  event: string;
+  certificado_id: number;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private pagesService: PagesService,
-    private toastService: NbToastrService
+    private toastService: NbToastrService,
+    @Inject(WEB3) private web3: Web3
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.route.params.subscribe(params=>{
       console.log(params);
       this.solicitud_id = params.id;
@@ -41,6 +53,12 @@ export class CertificadoEmisionComponent implements OnInit {
       });
       this.get_datos_persona();
     });
+    if(this.web3.givenProvider.isMetaMask){
+      await this.web3.givenProvider.enable();
+    }
+    const accounts = await this.web3.eth.getAccounts();
+    this.myAdress = accounts[0];
+    this.setContract();
   }
   get f() {return this.CertForm.controls;}
   get_datos_persona() {
@@ -50,6 +68,20 @@ export class CertificadoEmisionComponent implements OnInit {
       this.f.institucion_id.setValue(data.data.instituciones[0].id);
       this.f.alumno_nombre.setValue(`${data.data.nombre} ${data.data.apellido_paterno} ${data.data.apellido_materno}`)
     });
+  }
+  setContract() {
+    this.certification  = new this.web3.eth.Contract(certification_artifacts, this.contractAdress);
+  }
+  sign_Hash(ipfsHash: string) {
+    this.certification.methods.addCertificate('0x4894bD582F1A6AD80A71BBe6D739182AA269DedB',ipfsHash)
+    .send({from: this.myAdress,
+          value: '1000'})
+    .then(res=>{
+      console.log(res);
+    })
+    .catch(err=>{
+      console.log(err);
+    })
   }
   OnSubmit() {
     this.submitted = true;
@@ -70,6 +102,7 @@ export class CertificadoEmisionComponent implements OnInit {
       }
       this.pagesService.createCertificate(certificado).subscribe(data=>{
         console.log(data);
+        this.sign_Hash(data.data.certificate_hash);
       })
     }
   }
