@@ -13,13 +13,13 @@ export class Certificado {
     @Column()
     certificate_hash: string;
 
-    @Column({type: "json"})
+    @Column({type: "text"})
     json_data: string;
 
     @Column({type:"datetime",default: () => "CURRENT_TIMESTAMP"})
     createdAt: Date;
 
-    @Column({type: "json"})
+    @Column({type: "text"})
     json_response: string;
 
     @ManyToOne(type=>Usuario, usuario=> usuario.certificados)

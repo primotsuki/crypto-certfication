@@ -16,7 +16,7 @@ export async function getInstitucion(req: Request, res: Response) {
         });
     } catch (e) {
         res.status(500).send({
-            error: 'internal server error'
+            error: 'hubo un problema obteniendo los datos'
         })
         return;
     }

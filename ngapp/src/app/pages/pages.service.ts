@@ -34,4 +34,7 @@ export class PagesService {
   public createCertificate(certificado: any) {
     return this.http.post<any>(`${environment.apiUrl}/certificado/create`, certificado);
   }
+  public saveTransaction(certificado:any) {
+    return this.http.post<any>(`${environment.apiUrl}/certificado/update`, certificado);
+  }
 }

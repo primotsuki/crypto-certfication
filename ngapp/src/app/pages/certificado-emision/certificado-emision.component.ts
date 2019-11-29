@@ -5,8 +5,6 @@ import {PagesService} from '../pages.service';
 import {NbToastrService, NbGlobalPhysicalPosition} from '@nebular/theme';
 import {WEB3} from '../../core/web3';
 import Web3 from 'web3';
-import contract from 'truffle-contract';
-import { on } from 'cluster';
 const certification_artifacts = require('../../../../../contract/build/contracts/UserCertificatesAbi.json');
 @Component({
   selector: 'app-certificado-emision',
@@ -77,7 +75,16 @@ export class CertificadoEmisionComponent implements OnInit {
     .send({from: this.myAdress,
           value: '1000'})
     .then(res=>{
-      console.log(res);
+      let data = {
+        certificado_id: this.certificado_id,
+        response: {
+          transactionHash: res.transactionHash,
+          _from: res.events.CertificateIssued.returnValues._from,
+          _ipfsHash: res.events.CertificateIssued.returnValues._ipfsHash,
+          _to: res.events.CertificateIssued.returnValues._to
+        }
+      };
+      this.saveTransaction(data);
     })
     .catch(err=>{
       console.log(err);
@@ -101,10 +108,19 @@ export class CertificadoEmisionComponent implements OnInit {
         solicitud_id: this.f.solicitud_id.value
       }
       this.pagesService.createCertificate(certificado).subscribe(data=>{
-        console.log(data);
+        this.certificado_id = data.data.id;
         this.sign_Hash(data.data.certificate_hash);
       })
     }
   }
-
+  saveTransaction(certificado: any) {
+    console.log(certificado);
+    this.pagesService.saveTransaction(certificado).subscribe(data=>{
+      this.toastService.success(
+        'Certificado Registrado',
+        'Se genero correctamente el documento',
+        {position: NbGlobalPhysicalPosition.TOP_RIGHT, status: 'success'}
+      )
+    });
+  }
 }
