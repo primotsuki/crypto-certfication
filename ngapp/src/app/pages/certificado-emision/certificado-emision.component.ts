@@ -61,7 +61,6 @@ export class CertificadoEmisionComponent implements OnInit {
   get f() {return this.CertForm.controls;}
   get_datos_persona() {
     this.pagesService.getDatosUsuario(this.f.alumno_id.value).subscribe(data=>{
-      console.log(data);
       this.f.institucion_nombre.setValue(data.data.instituciones[0].nombre);
       this.f.institucion_id.setValue(data.data.instituciones[0].id);
       this.f.alumno_nombre.setValue(`${data.data.nombre} ${data.data.apellido_paterno} ${data.data.apellido_materno}`)
@@ -76,6 +75,7 @@ export class CertificadoEmisionComponent implements OnInit {
           value: '1000'})
     .then(res=>{
       let data = {
+        solicitud_id: this.f.solicitud_id.value,
         certificado_id: this.certificado_id,
         response: {
           transactionHash: res.transactionHash,
@@ -114,7 +114,6 @@ export class CertificadoEmisionComponent implements OnInit {
     }
   }
   saveTransaction(certificado: any) {
-    console.log(certificado);
     this.pagesService.saveTransaction(certificado).subscribe(data=>{
       this.toastService.success(
         'Certificado Registrado',

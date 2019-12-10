@@ -1,6 +1,7 @@
 import {Request, Response} from 'express';
 import {getConnection} from 'typeorm';
 import {Certificado} from '../../entity/certificado';
+import {Solicitud} from '../../entity/solicitud';
 export async function UpdateCertificado(req: Request, res: Response) {
     let certificado = req.body;
     try {
@@ -12,6 +13,16 @@ export async function UpdateCertificado(req: Request, res: Response) {
         })
         .where("id = :id",{id: certificado.certificado_id})
         .execute();
+        await getConnection()
+            .createQueryBuilder()
+            .relation(Solicitud, "estadoSolicitud")
+            .of(certificado.solicitud_id)
+            .set(3);
+        await getConnection()
+            .createQueryBuilder()
+            .relation(Solicitud,"certificado")
+            .of(certificado.solicitud_id)
+            .set(certificado.certificado_id);
         res.send({
             response: true,
             data: updated_col
