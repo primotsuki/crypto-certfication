@@ -8,6 +8,8 @@ import {getSolicitudInstitucion} from './controller/solicitudes/getInstituciones
 import {getUsuarioData} from './controller/persona/getUserHandler';
 import {CreateCertificado} from "./controller/certificado/CreateCertificado";
 import {UpdateCertificado} from "./controller/certificado/UpdateCertificado";
+import {getCertificados} from "./controller/certificado/MisCertificados";
+
 export const AppRoutes = [
   {
       path: "/register",
@@ -49,5 +51,9 @@ export const AppRoutes = [
     path: "/certificado/update",
     method: "post",
     action: UpdateCertificado
+  }, {
+    path: "/certificados/:usuario_id",
+    method: "get",
+    action: getCertificados
   }
 ];

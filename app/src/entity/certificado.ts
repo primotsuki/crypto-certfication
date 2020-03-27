@@ -19,7 +19,7 @@ export class Certificado {
     @Column({type:"datetime",default: () => "CURRENT_TIMESTAMP"})
     createdAt: Date;
 
-    @Column({type: "text"})
+    @Column({type: "text", nullable: true})
     json_response: string;
 
     @ManyToOne(type=>Usuario, usuario=> usuario.certificados)

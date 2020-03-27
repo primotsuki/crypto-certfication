@@ -25,10 +25,18 @@ import { SolicitudesPendientesComponent } from './solicitudes-pendientes/solicit
 import { CertificadoEmisionComponent } from './certificado-emision/certificado-emision.component';
 import { VerCertificadoComponent } from './ver-certificado/ver-certificado.component';
 import { CertificadovalidacionComponent } from './certificadovalidacion/certificadovalidacion.component';
+import { MisCertificadosComponent } from './mis-certificados/mis-certificados.component';
 
 
 @NgModule({
-  declarations: [SolicitudesComponent, PagesComponent, MisSolicitudesComponent, SolicitudesPendientesComponent, CertificadoEmisionComponent, VerCertificadoComponent, CertificadovalidacionComponent],
+  declarations: [SolicitudesComponent, 
+    PagesComponent,
+    MisSolicitudesComponent,
+    SolicitudesPendientesComponent,
+    CertificadoEmisionComponent,
+    VerCertificadoComponent,
+    CertificadovalidacionComponent,
+    MisCertificadosComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

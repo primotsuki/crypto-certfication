@@ -5,6 +5,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Inicio',
         icon: 'home-outline',
         link: '/pages/dashboard',
+        hidden: true
     },{
         title: 'Nueva Solicitud',
         icon: 'email-outline',
