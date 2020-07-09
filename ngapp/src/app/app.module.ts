@@ -37,7 +37,12 @@ import {MomentModule} from 'ngx-moment';
     NbSidebarModule.forRoot(),
     NbToastrModule.forRoot(),
     NbWindowModule.forRoot(),
-    NbButtonModule
+    NbButtonModule,
+    MomentModule.forRoot({
+      relativeTimeThresholdOptions:{
+        'm': 59
+      }
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true},

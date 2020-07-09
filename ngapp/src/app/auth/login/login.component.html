@@ -1,11 +1,14 @@
 
   <nb-card>
-    <nb-card-header>Nebula</nb-card-header>
+    <nb-card-header>CRYPTO - CERTIFICATION</nb-card-header>
     <nb-card-body>
       <h1 class="text-center">Login</h1>
       <p class="text-center">Bienvenido. Ingrese con su email</p>
       <div class="row justify-content-center align-items-center">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <ng-container *ngIf="error">
+              <p class="error-message">Usuario o contraseña incorrectas ...</p>
+            </ng-container>
               <div class="form-row space-group">
                   <label for="email" class="label">Correo Electronico</label>
                   <input type="text" name="email" nbInput fullWidth
@@ -26,7 +29,8 @@
                     <p class="error-message"></p>
                   </ng-container>
                 </div>
-                <div class="form-row">
+                <br>
+                <div class="form-row space-group">
                     <button nbButton
                       fullWidth
                       status="success"
@@ -38,5 +42,5 @@
           </form>
       </div>
     </nb-card-body>
-    <nb-card-footer>By Wikipedia</nb-card-footer>
+    <nb-card-footer>By Primo L. </nb-card-footer>
   </nb-card>

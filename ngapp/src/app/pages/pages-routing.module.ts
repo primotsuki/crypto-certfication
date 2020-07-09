@@ -6,6 +6,8 @@ import {MisSolicitudesComponent} from './mis-solicitudes/mis-solicitudes.compone
 import {SolicitudesPendientesComponent} from './solicitudes-pendientes/solicitudes-pendientes.component';
 import {CertificadoEmisionComponent} from './certificado-emision/certificado-emision.component';
 import { MisCertificadosComponent } from './mis-certificados/mis-certificados.component';
+import { CertificadovalidacionComponent } from './certificadovalidacion/certificadovalidacion.component';
+import { CertificadosInstitucionComponent } from './certificados-institucion/certificados-institucion.component';
 
 const routes: Routes =[{
     path: '',
@@ -26,6 +28,12 @@ const routes: Routes =[{
         },{
             path: 'mis_certificados',
             component: MisCertificadosComponent
+        },{
+            path: 'validar',
+            component: CertificadovalidacionComponent
+        },{
+            path: 'certificados_institucion',
+            component: CertificadosInstitucionComponent
         }
     ]
     }];

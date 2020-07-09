@@ -32,12 +32,17 @@ export class PagesComponent {
         },{
             title: 'Mis certificados',
             icon: 'folder-outline',
-            link: '/pages/mis_certificados'
+            link: '/pages/mis_certificados',
+            hidden: (this.getRol()==2)
+        },{
+            title: 'Certificados generados',
+            icon: 'folder-outline',
+            link: '/pages/certificados_institucion',
+            hidden: (this.getRol()==3)
         },{
             title: 'Validar certificado',
             icon: 'search-outline',
             link: '/pages/validar',
-            hidden: (this.getRol()==3)
         },{
             title: 'Solicitudes pendientes',
             icon: 'email-outline',

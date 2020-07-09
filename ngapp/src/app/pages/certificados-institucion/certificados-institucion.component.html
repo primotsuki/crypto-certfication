@@ -1,7 +1,7 @@
 <nb-card>
     <nb-card-body>
-        <h1 class="text-center">Mis certificados</h1>
-        <p class="text-center">Todos mis certificados aprobados</p>
+        <h1 class="text-center">Certificados generados</h1>
+        <p class="text-center">Todos los certificados generados</p>
     </nb-card-body>
 </nb-card>
 <div class="row">
@@ -11,7 +11,7 @@
             <nb-card-body>
               Titulo: {{certificado.json_data.titulo_curso}}
               <br>
-              Fecha de Emision: {{certificado.json_data.fecha_emision}}
+              Fecha de Emision: {{certificado.json_data.fecha_emision | amDateFormat:'LL'}}
             </nb-card-body>
             <nb-card-footer>
                 <button nbButton nbTooltip="Ver certificado" ghost status="success" [routerLink]=""><nb-icon icon="eye-outline"></nb-icon></button>

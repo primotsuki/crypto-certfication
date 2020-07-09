@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   submitted = false;
-  error: any;
+  error = false;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -45,6 +45,9 @@ export class LoginComponent implements OnInit {
         {position: NbGlobalPhysicalPosition.TOP_RIGHT, status: 'success' }
       );
       this.router.navigate(['/pages']);
+    }, err=>{
+      this.error = true;
+      console.log( 'usuario o contraseña incorrectas ..' )
     });
   }
 }

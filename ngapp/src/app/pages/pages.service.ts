@@ -40,4 +40,7 @@ export class PagesService {
   public getCertificados(user_id: number) {
     return this.http.get<any>(`${environment.apiUrl}/certificados/${user_id}`);
   }
+  public gtCertificadosInstitucion(institucion_id: number) {
+    return this.http.get<any>(`${environment.apiUrl}/certificados_institucion/${institucion_id}`);
+  }
 }

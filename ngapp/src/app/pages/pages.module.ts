@@ -26,6 +26,7 @@ import { CertificadoEmisionComponent } from './certificado-emision/certificado-e
 import { VerCertificadoComponent } from './ver-certificado/ver-certificado.component';
 import { CertificadovalidacionComponent } from './certificadovalidacion/certificadovalidacion.component';
 import { MisCertificadosComponent } from './mis-certificados/mis-certificados.component';
+import { CertificadosInstitucionComponent } from './certificados-institucion/certificados-institucion.component';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { MisCertificadosComponent } from './mis-certificados/mis-certificados.co
     CertificadoEmisionComponent,
     VerCertificadoComponent,
     CertificadovalidacionComponent,
-    MisCertificadosComponent],
+    MisCertificadosComponent,
+    CertificadosInstitucionComponent
+  ],
   imports: [
     CommonModule,
     PagesRoutingModule,
