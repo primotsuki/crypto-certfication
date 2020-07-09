@@ -22,6 +22,9 @@ export class Certificado {
     @Column({type: "text", nullable: true})
     json_response: string;
 
+    @Column({type: "varchar", nullable: true})
+    transaction_hash: string;
+
     @ManyToOne(type=>Usuario, usuario=> usuario.certificados)
     usuarios : Usuario;
 

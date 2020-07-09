@@ -9,6 +9,7 @@ import {getUsuarioData} from './controller/persona/getUserHandler';
 import {CreateCertificado} from "./controller/certificado/CreateCertificado";
 import {UpdateCertificado} from "./controller/certificado/UpdateCertificado";
 import {getCertificados} from "./controller/certificado/MisCertificados";
+import { getCertificadosInstitucion } from "./controller/certificado/certificadoInstitucion";
 
 export const AppRoutes = [
   {
@@ -55,5 +56,9 @@ export const AppRoutes = [
     path: "/certificados/:usuario_id",
     method: "get",
     action: getCertificados
+  },{
+    path:"/certificados_institucion/:institucion_id",
+    method: "get",
+    action: getCertificadosInstitucion
   }
 ];

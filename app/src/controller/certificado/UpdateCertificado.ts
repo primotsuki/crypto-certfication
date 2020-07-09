@@ -9,7 +9,8 @@ export async function UpdateCertificado(req: Request, res: Response) {
         .createQueryBuilder()
         .update(Certificado)
         .set({
-            json_response: JSON.stringify(certificado.response)
+            json_response: JSON.stringify(certificado.response),
+            transaction_hash: certificado.response.transactionHash
         })
         .where("id = :id",{id: certificado.certificado_id})
         .execute();
