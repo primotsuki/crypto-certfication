@@ -1,0 +1,16 @@
+<nb-card>
+    <nb-card-body>
+        <h1 class="text-center">Mis Solicitudes</h1>
+        <p class="text-center">Solicitudes enviadas mostrando su estado</p>
+    </nb-card-body>
+</nb-card>
+<div class="row">
+    <div class="col-sm-12 col-md-4" *ngFor="let solicitud of solicitudes">
+        <nb-card accent="info">
+            <nb-card-header>{{solicitud.institucion.nombre}}</nb-card-header>
+            <nb-card-body>
+              {{solicitud.tipoSolicitud.descripcion_solicitud}}
+            </nb-card-body>
+          </nb-card>
+    </div>
+</div>

@@ -1,8 +1,9 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany, ManyToOne} from "typeorm";
 import {Certificado} from "./certificado";
 import {Rol} from "./rol";
 import {Permiso} from "./permiso";
 import {Institucion} from "./institucion";
+import {Solicitud} from "./solicitud";
 
 @Entity()
 export class Usuario {
@@ -12,6 +13,9 @@ export class Usuario {
 
     @Column()
     username: string;
+
+    @Column()
+    email: string;
 
     @Column()
     nombre: string;
@@ -30,12 +34,15 @@ export class Usuario {
     @OneToMany(type=> Certificado, certificado => certificado.usuarios)
     certificados : Certificado[];
 
-    @ManyToMany(type=>Rol, rol=> rol.usuarios)
-    roles: Rol[];
+    @ManyToOne(type=>Rol, rol=> rol.usuarios)
+    rol: Rol[];
 
     @ManyToMany(type=>Permiso, permiso=> permiso.usuarios)
     permisos: Permiso[];
 
     @ManyToMany(type=>Institucion, institucion=> institucion.usuarios)
     instituciones: Institucion[];
+
+    @OneToMany(type=> Solicitud, solicitud=>solicitud.usuario)
+    solicitudes: Solicitud[];
 } 

@@ -1,0 +1,23 @@
+<nb-card>
+    <nb-card-body>
+        <h1 class="text-center">Mis Solicitudes</h1>
+        <p class="text-center">Solicitudes enviadas mostrando su estado</p>
+    </nb-card-body>
+</nb-card>
+<div class="row">
+    <div class="col-sm-12 col-md-4" *ngFor="let solicitud of solicitudes">
+        <nb-card accent="info">
+            <nb-card-header>{{solicitud.tipoSolicitud.descripcion_solicitud}}</nb-card-header>
+            <nb-card-body>
+             Estudiante: {{solicitud.usuario.nombre}} {{solicitud.usuario.apellido_paterno}} {{solicitud.usuario.apellido_materno}}
+              Motivo: {{solicitud.motivo}}
+              Fecha de Solicitud: {{solicitud.createdAt | amDateFormat: 'LL'}}
+            </nb-card-body>
+            <nb-card-footer>
+                <button nbButton nbTooltip="Generar certificado" nbTooltipStatus="primary" ghost status="success" [routerLink]="['/pages',solicitud.id,'emitir_certificado',solicitud.usuario.id]"><nb-icon icon="checkmark-circle-outline"></nb-icon></button>
+                <button nbButton nbTooltip="Rechazar Certificado" nbTooltipStatus="primary" ghost status="danger"><nb-icon icon="close-circle-outline"></nb-icon></button>
+                <button nbButton nbTooltip="Ver informacion" nbTooltipStatus="primary" ghost status="info"><nb-icon icon="info-outline"></nb-icon></button>
+            </nb-card-footer>
+          </nb-card>
+    </div>
+</div>

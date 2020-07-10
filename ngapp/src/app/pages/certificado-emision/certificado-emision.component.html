@@ -1,0 +1,62 @@
+<nb-card>
+    <nb-card-body>
+        <h1 class="text-center">Emision de Certificado</h1>
+        <p class="text-center">llene el formulario</p>
+    </nb-card-body>
+</nb-card>
+<nb-card>
+    <nb-card-body>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <form [formGroup]="CertForm" (ngSubmit)="OnSubmit()" aria-labelledby="title">
+                    <div class="form-row space-input">
+                        <div class="form-control-group col-6">
+                            <label class="label">Institucion</label>
+                            <input type="text" name="nombre" nbInput fullWidth
+                                placeholder="Institucion"
+                                formControlName="institucion_nombre">
+                        </div>
+                        <div class="form-control-group col-6">
+                            <label class="label">Nombre del Curso o Carrera</label>
+                            <input type="text" name="course" nbInput fullWidth
+                                placeholder="Carrera"
+                                formControlName="titulo_curso">
+                        </div>
+                    </div>
+                    <div class="form-row space-input">
+                        <div class="form-control-group col-6">
+                            <label class="label">Fecha de Emision</label>
+                            <input [nbDatepicker]="datepicker" name="dateEmision" nbInput fullWidth formControlName="fecha_emision">
+                            <nb-datepicker #datepicker></nb-datepicker>
+                        </div>
+                        <div class="form-control-group col-6">
+                            <label class="label">Nombre del Alumno</label>
+                            <input type="text" name="course" nbInput fullWidth
+                                placeholder="Nombre del Alumno"
+                                formControlName="alumno_nombre">
+                        </div>
+                    </div>
+                    <div class="form-row space-input">
+                        <div class="form-control-group col-6">
+                            <label class="label">DNI del Alumno</label>
+                            <input type="text" name="dni" nbInput fullWidth
+                                    placeholder="DNI de los alumnos"
+                                    formControlName="alumno_dni">
+                        </div>
+                        <div class="form-control-group col-6">
+                            <label class="label">Direccion de billetera</label>
+                            <input type="text" name="wallet" nbInput fullWidth
+                                    placeholder="Direccion de billetera"
+                                    formControlName="wallet">
+                        </div>
+                    </div>
+                    <div class="form-row space-input">
+                        <div class="col-4">
+                            <button nbButton shape="semi-round" status="success" type="submit">Registrar solicitud</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

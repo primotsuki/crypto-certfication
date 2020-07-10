@@ -1,0 +1,46 @@
+
+  <nb-card>
+    <nb-card-header>CRYPTO - CERTIFICATION</nb-card-header>
+    <nb-card-body>
+      <h1 class="text-center">Login</h1>
+      <p class="text-center">Bienvenido. Ingrese con su email</p>
+      <div class="row justify-content-center align-items-center">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <ng-container *ngIf="error">
+              <p class="error-message">Usuario o contraseña incorrectas ...</p>
+            </ng-container>
+              <div class="form-row space-group">
+                  <label for="email" class="label">Correo Electronico</label>
+                  <input type="text" name="email" nbInput fullWidth
+                    placeholder="Correo Electronico"
+                    formControlName="email"
+                    [status]="(submitted && f.email.errors)? 'danger': 'success'">
+                  <ng-container *ngIf="submitted && f.email.errors">
+                    <p class="error-message">El campo es necesario. !</p>
+                  </ng-container>
+                </div>
+                <div class="form-row">
+                  <label for="password" class="label">Contraseña</label>
+                  <input type="password" name="password" nbInput fullWidth
+                    placeholder="Contraseña"
+                    formControlName="password"
+                    [status]="(submitted && f.password.errors)? 'danger': 'success'">
+                  <ng-container *ngIf="submitted && f.password.errors">
+                    <p class="error-message"></p>
+                  </ng-container>
+                </div>
+                <br>
+                <div class="form-row space-group">
+                    <button nbButton
+                      fullWidth
+                      status="success"
+                      type="submit"
+                      >
+                      Registrar
+                    </button>
+                </div>
+          </form>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>By Primo L. </nb-card-footer>
+  </nb-card>

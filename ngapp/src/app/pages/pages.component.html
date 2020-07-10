@@ -1,0 +1,18 @@
+<nb-layout>
+    <nb-layout-header fixed class="row">
+      <div class="col-10">
+        CRYPTO - CERTIFICATION
+      </div>
+      <div class="col-2">
+        <button nbButton ghost status="danger" (click)="logout()">
+          salir <nb-icon icon="close-circle-outline"></nb-icon>
+        </button>
+      </div>
+    </nb-layout-header>
+    <nb-sidebar>
+        <nb-menu [items]="menu"></nb-menu>
+    </nb-sidebar>
+    <nb-layout-column>
+      <router-outlet></router-outlet>
+    </nb-layout-column>
+  </nb-layout>
