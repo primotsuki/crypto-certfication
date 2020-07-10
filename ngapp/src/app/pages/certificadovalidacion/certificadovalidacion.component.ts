@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PagesService } from '../pages.service';
 import {NbToastrService, NbGlobalPhysicalPosition} from '@nebular/theme';
@@ -14,9 +13,10 @@ const certification_artifacts = require('../../../../../contract/build/contracts
 })
 export class CertificadovalidacionComponent implements OnInit {
 
-  CertForm: FormGroup;
+  hash:string = '';
   submitted = false;
   error: any;
+  valid: boolean = false;
   contractAdress: string = '0xAD720c3045a492c27b76696F9C3137801dA572eF';
   myAdress: string = '';
   certificationIssuedEvent: any;
@@ -24,7 +24,6 @@ export class CertificadovalidacionComponent implements OnInit {
   event: string;
   certificado_id: number;
   constructor(
-    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private pagesService: PagesService,
     private toastService: NbToastrService,
@@ -32,20 +31,33 @@ export class CertificadovalidacionComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.CertForm = this.formBuilder.group({
-      student_address: [''],
-      issuer_address: [''],
-      transaction_hash: [''],
-      ipfs_hash: ['']
-    });
     if(this.web3.givenProvider.isMetaMAsk){
       await this.web3.givenProvider.enable();
     }
     const accounts = await this.web3.eth.getAccounts();
     this.myAdress = accounts[0];
     this.setContract();
+    this.valid = false;
   }
   setContract() {
     this.certification  = new this.web3.eth.Contract(certification_artifacts, this.contractAdress);
+  }
+  ValidarHash() {
+    this.submitted= true;
+    this.pagesService.ValidarCertificado(this.hash)
+    .subscribe(data=>{
+      if(data.data.length>0)
+        this.valid = true;
+        console.log(this.submitted, this.valid);
+    })
+  }
+  certificateHash() {
+    console.log(this.myAdress);
+    this.certification.methods.certificateExists(this.hash)
+    .send({from: this.myAdress,
+          value: '1000'})
+    .then(res=>{
+      console.log(res);
+    })
   }
 }

@@ -4,3 +4,27 @@
         <p class="text-center">Puede validar cualquier certificado que haya sido firmado de en esta plataforma</p>
     </nb-card-body>
 </nb-card>
+<nb-card>
+    <nb-card-body>
+        <div class="form-row">
+            <div class="form-control-group col-6">
+                <label class="label">Hash del Certificado</label>
+                <input type="text" name="nombre" nbInput fullWidth
+                    placeholder="Hash"
+                    [(ngModel)]="hash">
+            </div>
+            <div class="form-control-group col-6">
+                <button nbButton shape="semi-round" status="success" (click)="ValidarHash()">Validar</button>
+            </div>
+        </div>
+        <div class="form-row">
+            <ng-container *ngIf="submitted && valid">
+                <p class="valid-message">El Certificado esta registrado, desea comprobar su veracidad</p>
+                <button nbButton shape="semi-round" status="info" (click)="certificateHash()">Certificar</button>
+              </ng-container>
+            <ng-container *ngIf="submitted && !valid">
+                <p class="error-message">El Certificado no esta registrado,pruebe otro hash distinto</p>
+            </ng-container>
+        </div>
+    </nb-card-body>
+</nb-card>

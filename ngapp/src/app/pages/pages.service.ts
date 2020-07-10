@@ -43,4 +43,7 @@ export class PagesService {
   public gtCertificadosInstitucion(institucion_id: number) {
     return this.http.get<any>(`${environment.apiUrl}/certificados_institucion/${institucion_id}`);
   }
+  public ValidarCertificado(hash: string) {
+    return this.http.get<any>(`${environment.apiUrl}/validar_certificado/${hash}`);
+  }
 }

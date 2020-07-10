@@ -10,6 +10,7 @@ import {CreateCertificado} from "./controller/certificado/CreateCertificado";
 import {UpdateCertificado} from "./controller/certificado/UpdateCertificado";
 import {getCertificados} from "./controller/certificado/MisCertificados";
 import { getCertificadosInstitucion } from "./controller/certificado/certificadoInstitucion";
+import { validarCertificado } from "./controller/certificado/ValidarCertificado";
 
 export const AppRoutes = [
   {
@@ -60,5 +61,9 @@ export const AppRoutes = [
     path:"/certificados_institucion/:institucion_id",
     method: "get",
     action: getCertificadosInstitucion
+  },{
+    path: "/validar_certificado/:hash",
+    method: "get",
+    action: validarCertificado
   }
 ];
