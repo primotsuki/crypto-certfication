@@ -1,4 +1,4 @@
-###  Crypto-Certification :heart_decoration:
+###  Crypto-Certification :credit_card:
 
 ------------
 
@@ -40,4 +40,4 @@ Pueden usar este prototipo, es de libre uso, tampoco es la mejor de las implemen
 este proyecto forma parte de mi tesis de grado de la Universidad Mayor de San Andres de Bolivia.
 >aprovechando, aunque talvez no lo lean, agradecido siempre con Dios, mi madre, mi familia, y amigos en general, aaahh y a mi amiguita Angela Ascarrunz. a todos gracias por su apoyo siempre ...!!!!!
 
-no olivides darme la estrellita si te gusto el proyecto xD:tw-1f603: :tw-1f603:
+no olivides darme la estrellita si te gusto el proyecto xD:joy: :joy:
