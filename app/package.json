@@ -14,7 +14,7 @@
       "cors": "^2.8.5",
       "dotenv": "^8.1.0",
       "envfile": "^3.0.0",
-      "express": "^4.17.1",
+      "express": "^4.17.3",
       "ipfs": "^0.39.0",
       "ipfs-http-client": "^39.0.2",
       "json-stringify-safe": "^5.0.1",
